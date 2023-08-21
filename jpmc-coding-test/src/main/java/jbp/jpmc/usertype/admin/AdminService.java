@@ -1,6 +1,5 @@
 package jbp.jpmc.usertype.admin;
 
-import jbp.jpmc.entity.seat.Seat;
 import jbp.jpmc.entity.show.Show;
 import jbp.jpmc.entity.show.ShowService;
 import jbp.jpmc.entity.show.ShowValidator;

@@ -2,7 +2,7 @@ package jbp.jpmc.entity.seat;
 
 import jbp.jpmc.entity.show.Show;
 import jbp.jpmc.entity.show.ShowRepository;
-import org.apache.commons.lang3.time.DateUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class SeatValidator {
         List<Seat> seatsToUpdate = seatRepository.findAllByShowNumberAndSeatNumberIn(showNumber, seatNumbers);
         if(seatsToUpdate.size() != seatNumbers.size()){
             StringBuilder seats = new StringBuilder();
-            seatNumbers.stream().forEach(s -> seats.append(s+" "));
+            seatNumbers.stream().forEach(s -> seats.append(s+ StringUtils.SPACE));
             System.out.println("Invalid seat number found, please check: "+seats.toString());
             return false;
         }
@@ -55,12 +55,13 @@ public class SeatValidator {
                 long diff = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
                 if(diff > window){
                     System.out.println("Invalid cancellation, beyond window time in minutes: "+window+" with time minutes difference: "+diff);
+                    return false;
                 }else{
                     return true;
                 }
 
-            }else{
-                return true;
+            }else if(show == null){
+                return false;
             }
         }else{
             System.out.println("No booking found with ticket Number: "+ticketNumber+" and phone number: "+phoneNumber);
