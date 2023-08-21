@@ -28,7 +28,7 @@ public class AdminDisplay {
                 case 3: choice = 0;
                     break;
                 default:
-                    System.out.println("invalid choice");
+                    System.out.println("invalid choice: "+choice);
             }
 
         } while(choice != 0);

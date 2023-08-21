@@ -39,7 +39,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
                 case 3:System.out.println("App terminated...\n\n");
                        System.exit(0);
                 default:
-                    System.out.println("invalid choice");
+                    System.out.println("invalid choice: "+choice);
             }
 
         } while(choice != 0);
