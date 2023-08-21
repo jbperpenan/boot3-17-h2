@@ -8,6 +8,14 @@ Github URL: https://github.com/jbperpenan/boot3-17-h2/tree/feature/jpmc-coding-t
 Running the jar file: java -jar <'path to project'>/jpmc-coding-test/target/jpmc-coding-test-1.0-SNAPSHOT.jar
    - ![img_1.png](img_1.png)
 
+Accessing h2 in-memory database:
+- URL: http://localhost:8080/h2-console/
+- username 'sa' with no defined password
+
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)  
+
+
 Assumptions:
 - Additional assumptions here are on top of the email initial requirements
 - The input 'showNumber' is unique but not auto generated, validation is in place  
