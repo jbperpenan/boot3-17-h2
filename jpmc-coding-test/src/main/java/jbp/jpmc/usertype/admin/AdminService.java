@@ -1,11 +1,14 @@
 package jbp.jpmc.usertype.admin;
 
+import jbp.jpmc.entity.seat.Seat;
 import jbp.jpmc.entity.show.Show;
 import jbp.jpmc.entity.show.ShowService;
 import jbp.jpmc.entity.show.ShowValidator;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,11 +25,22 @@ public class AdminService {
 
     public void adminViewShows(){
         System.out.println("========= LIST OF SHOWS ============");
-        List<Show> shows = showService.getAllShows();
+        System.out.print("Enter show number (leave blank for all shows): ");
+        String showNumber = input_scanner.nextLine();
+
+        List<Show> shows = new ArrayList<>();
+        if (StringUtils.isEmpty(showNumber)){
+            shows.addAll(showService.getAllShows());
+        } else{
+            shows.add(showService.findShowByShowNumber(Long.valueOf(showNumber)));
+        }
+        System.out.println("\n");
         for(Show s: shows) {
-            System.out.println(s.toString());
-            s.getSeatNumbers().stream().forEach(sn -> System.out.println(sn.toString()));
-            System.out.println("<------------------------------------------->");
+            if(s != null){
+                System.out.println(s.toString());
+                s.getSeatNumbers().stream().forEach(sn -> System.out.println(sn.toString()));
+                System.out.println("<------------------------------------------->");
+            }
         }
         System.out.println("\n\n");
     }

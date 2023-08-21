@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jbp.jpmc.entity.seat.SeatStatus.OPEN;
-
-
 @Service
 public class ShowService {
 

@@ -1,9 +1,7 @@
 package jbp.jpmc.usertype.buyer;
 
-import jbp.jpmc.usertype.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Scanner;
 
 @Service
@@ -17,14 +15,14 @@ public class BuyerDisplay {
     public void displayBuyer () {
         int choice = 99;
         do{
-            System.out.println("\n\nSelect Buyer Task: \n [1] Check Shows \n [2] Book \n [3] Cancel \n [4] Exit");
+            System.out.println("\n\nSelect Buyer Task: \n [1] Seats Availability \n [2] Book \n [3] Cancel \n [4] Exit");
             System.out.print("Enter number: ");
 
             choice = input_scanner.nextInt();
             switch (choice){
                 case 1: buyerService.buyerViewShows();
                     break;
-                case 2: buyerService.buyerBookShow();
+                case 2: buyerService.buyerBookSeats();
                     break;
                 case 3: buyerService.buyerCancelBook();
                     break;

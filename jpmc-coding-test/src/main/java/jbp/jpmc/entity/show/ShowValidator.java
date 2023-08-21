@@ -1,5 +1,6 @@
 package jbp.jpmc.entity.show;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public class ShowValidator {
 
     public Show isValidNewShow(String showDetails){
 
-        String[] updateInput = showDetails.trim().split( " ");
+        String[] updateInput = showDetails.trim().split(StringUtils.SPACE);
         if(updateInput.length == 4){
             try {
                 Long showNumber = Long.valueOf(updateInput[0]);
@@ -34,9 +35,18 @@ public class ShowValidator {
         }
     }
 
-    private boolean isValidShowNumber(Long showNumber) {
+    public boolean isValidShowNumber(Long showNumber) {
         if(showService.findShowByShowNumber(showNumber) != null){
             System.out.println("Invalid show number, already exists: "+showNumber);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean isExistingShow(Long showNumber) {
+        if(showService.findShowByShowNumber(showNumber) == null){
+            System.out.println("Show does not exists: "+showNumber);
             return false;
         }
 

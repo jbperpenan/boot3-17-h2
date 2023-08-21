@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
 import java.util.UUID;
 
 import static jbp.jpmc.entity.seat.SeatStatus.OPEN;
@@ -26,11 +26,12 @@ public class Seat {
     private String phoneNumber;
     private String seatNumber;
     @Enumerated(EnumType.STRING)
-    private SeatStatus seatStatus;
+    private SeatStatus status;
+    private Date bookedDateTime;
 
     public Seat(String seatNumber) {
         this.seatNumber = seatNumber;
-        this.seatStatus = OPEN;
+        this.status = OPEN;
     }
 
     @Override
@@ -42,10 +43,11 @@ public class Seat {
             this.phoneNumber =  "<empty>";
 
         return "\tSeat {" +
+                " Show Number= " + showNumber +
                 " Ticket Number= " + ticketNumber +
                 ", Phone Number= " + phoneNumber +
                 ", Seat Number= " + seatNumber +
-                ", Status= " + seatStatus +
+                ", Status= " + status +
                 " }";
     }
 }
