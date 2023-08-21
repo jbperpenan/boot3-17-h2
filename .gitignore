@@ -4,3 +4,9 @@
 *.xml
 jpmc-coding-test/jpmc-coding-test.iml
 *.class
+*.lst
+jpmc-coding-test/target/maven-archiver/pom.properties
+jpmc-coding-test/target/surefire-reports/jbp.jpmc.entity.show.ShowServiceTest.txt
+jpmc-coding-test/target/surefire-reports/jbp.jpmc.entity.seat.SeatServiceTest.txt
+jpmc-coding-test/target/surefire-reports/jbp.jpmc.entity.seat.SeatValidatorTest.txt
+jpmc-coding-test/target/surefire-reports/jbp.jpmc.entity.show.ShowValidatorTest.txt
